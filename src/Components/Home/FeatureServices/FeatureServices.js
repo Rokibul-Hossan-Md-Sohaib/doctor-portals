@@ -3,7 +3,7 @@ import feature from '../../../images/feature.png'
 
 const FeatureServices = () => {
     return (
-       <section className="features-service pb-0  my-5">
+       <section className="features-service pb-0  my-5 mb-5">
                  <div className="container mb-5">
            <div className="row mb-5">
                <div className="col-md-5 mr-5 mb-5 m-md-0">
