@@ -11,11 +11,17 @@ const Navbar = () => {
               <li class="nav-item">
                 <a class="nav-link mr-5 " aria-current="page" href="#">Home</a>
               </li>
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link mr-5 mr-5" href="#">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link mr-5" href="#">Dental Services</a>
+              </li> */}
+               <li class="nav-item ">
+                <a class="nav-link mr-5" href="/appointment">Appointment</a>
+              </li>
+              <li class="nav-item" >
+                <a class="nav-link mr-5" href="/login">Login</a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link mr-5 text-white" href="#">Reviews</a>
