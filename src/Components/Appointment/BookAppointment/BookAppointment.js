@@ -1,7 +1,7 @@
 import React from 'react';
 import BookingData from '../BookingData/BookingData';
 
-const BookAppointment = ({time}) => {
+const BookAppointment = ({date}) => {
     const bookData =[
         {
             id:1,
@@ -41,13 +41,13 @@ const BookAppointment = ({time}) => {
         },
     ]
 
-    console.log(time)
+    console.log(date)
     return (
         <div>
-            <h1 className="text-center text-brand">Available Appointment is:{time.toDateString()}</h1>
+            <h1 className="text-center text-brand">Available Appointment is:{date.toDateString()}</h1>
             <div className="row">
                 {
-                    bookData.map(data => <BookingData key={bookData.id} bookingData={data} date={time}/>)
+                    bookData.map(data => <BookingData key={bookData.id} bookingData={data} date={date}/>)
                 }
             </div>
         </div>
