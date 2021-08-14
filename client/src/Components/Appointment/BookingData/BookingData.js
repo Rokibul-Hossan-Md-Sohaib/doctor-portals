@@ -4,8 +4,13 @@ import AppointmentForm from '../ApoointmentForm/AppointmentForm';
 const BookingData = ({bookingData, date}) => {
     const [modalIsOpen, setIsOpen] = useState(false)
 
-    const openModal=()=> setIsOpen(true);
-    const closeModal=()=> setIsOpen(false);
+    function openModal() {
+        setIsOpen(true);
+    }
+    function closeModal() {
+        setIsOpen(false);
+    }
+    
     return (
         <div className="col-md-4 mb-5">
             <div class="card p-3" >

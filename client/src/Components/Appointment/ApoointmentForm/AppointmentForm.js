@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 
 
 const customStyles = {
+    
     content: {
         top: '50%',
         left: '50%',
@@ -16,36 +17,68 @@ const customStyles = {
     }
 };
 Modal.setAppElement('#root')
-const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
+const AppointmentForm = ({modalIsOpen, closeModal,appointmentOn,date}) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    // const [modalIsOpen, setIsOpen] = useState(false)
 
-        console.log(data);
+    // function openModal() {
+    //     setIsOpen(true);
+    // }
+    // function closeModal() {
+    //     setIsOpen(false);
+    // }
+    
+    
+    const onSubmit = data => {
       
-        closeModal()
+        data.created =new Date()
+
+        // fetch('http://localhost:4000/addAppointment' ,{
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json'},
+        //     body: JSON.stringify(data)
+        // })
+        // .then (res => res.json())
+        // .then(success => {
+        //     if(success){
+        //         closeModal()
+        //         alert("Thanks For The Appointment")
+        //     }
+        // })
+      
+    
        
     }
     return (
+
         <div>
-            <Modal isOpen={modalIsOpen}
+            <Modal 
+                isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
-
             >
+              {/* <h2>hello</h2>
+              <button onClick={closeModal}>Close</button>
+              <div> I am a modal</div>
+              <form >
+                  <input/>
+                  <button>tab navigation</button>
+                  <button>tab navigation</button>
+                  <button>tab navigation</button>
+                  <button>tab navigation</button>
+              </form> */}
+
                 <h2 className="text-brand text-center">{appointmentOn}</h2>
                 <p className="text-secondry text-center">On {date.toDateString()}<small></small></p>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        {/* register your input into the hook by invoking the "register" function */}
                         <input {...register("name", { required: true })} name="name" placeholder="Your Name" className="form-control" />
                         {errors.name && <span>This field is required</span>}
                     </div>
-                    {/* include validation with required or other standard HTML validation rules */}
                     <div className="form-group">
                         <input {...register("phone", { required: true })} name="phone" placeholder="Phone Number" className="form-control" />
-                        {/* errors will return when field validation fails  */}
                         {errors.phone && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
@@ -74,7 +107,9 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
                         </div>
                     </div>
 
-                    <input className="btn btn-primary" type="submit" />
+                    <div className="form-group text-right">
+                        <button onClick={closeModal} type="submit" className="btn btn-brand">Send</button>
+                    </div>
                 </form>
             </Modal>
            
