@@ -30,21 +30,23 @@ const AppointmentForm = ({modalIsOpen, closeModal,appointmentOn,date}) => {
     
     
     const onSubmit = data => {
-      
+      data.service =appointmentOn;
+      data.date =date
         data.created =new Date()
 
-        // fetch('http://localhost:4000/addAppointment' ,{
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json'},
-        //     body: JSON.stringify(data)
-        // })
-        // .then (res => res.json())
-        // .then(success => {
-        //     if(success){
-        //         closeModal()
-        //         alert("Thanks For The Appointment")
-        //     }
-        // })
+        fetch('http://localhost:5000/addAppointment' ,{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then (res => res.json())
+        .then(success => {
+            if(success){
+                closeModal()
+                
+                alert("Thanks For The Appointment")
+            }
+        })
       
     
        
@@ -108,7 +110,7 @@ const AppointmentForm = ({modalIsOpen, closeModal,appointmentOn,date}) => {
                     </div>
 
                     <div className="form-group text-right">
-                        <button onClick={closeModal} type="submit" className="btn btn-brand">Send</button>
+                        <button   type="submit" className="btn btn-brand">Send</button>
                     </div>
                 </form>
             </Modal>
